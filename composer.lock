@@ -3,8 +3,64 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9cd954379475efeeee559594f48384b0",
+    "hash": "ed1a05ed6ca5cfcb968a75be908cb6b4",
     "packages": [
+        {
+            "name": "clevertech/yii-booster",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clevertech/YiiBooster.git",
+                "reference": "32203692a02677f5669a91341ca1e0942f79ce55"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clevertech/YiiBooster/zipball/32203692a02677f5669a91341ca1e0942f79ce55",
+                "reference": "32203692a02677f5669a91341ca1e0942f79ce55",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.0"
+            },
+            "require-dev": {
+                "ardem/yii-coding-standard": "dev-master",
+                "mayflower/php-codebrowser": "1.0.*@dev",
+                "ncuesta/pinocchio": "dev-master",
+                "phploc/phploc": "*",
+                "phpunit/phpunit": "3.7.*",
+                "sebastian/phpcpd": "*",
+                "squizlabs/php_codesniffer": "1.*",
+                "yiisoft/yii": "1.1.14"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Ramirez Cobos",
+                    "email": "amigo.cobos@gmail.com",
+                    "homepage": "http://www.ramirezcobos.com",
+                    "role": "Founder and development"
+                },
+                {
+                    "name": "Saphronov Mark",
+                    "email": "hijarian@gmail.com",
+                    "homepage": "http://about.me/hijarian"
+                },
+                {
+                    "name": "Ruslan Fadeev"
+                }
+            ],
+            "description": "Widget toolkit for Yii framework",
+            "homepage": "http://yiibooster.clevertech.biz/",
+            "keywords": [
+                "bootstrap",
+                "yii"
+            ],
+            "time": "2014-02-19 21:24:17"
+        },
         {
             "name": "yiisoft/yii",
             "version": "dev-master",
@@ -98,7 +154,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "yiisoft/yii": 20
+        "yiisoft/yii": 20,
+        "clevertech/yii-booster": 20
     },
     "platform": [
 

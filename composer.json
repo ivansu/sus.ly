@@ -1,5 +1,6 @@
 {
     "require": {
-        "yiisoft/yii": "dev-master"
+        "yiisoft/yii": "dev-master",
+        "clevertech/yii-booster": "dev-master"
     }
 }
