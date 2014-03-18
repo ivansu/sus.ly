@@ -56,7 +56,7 @@ class SiteController extends Controller
 		  $in  = $in - ($a * $bcp);
 		}
 
-		return 'http://sus.ly/' . $out;
+		return Yii::app()->params['baseUrl'] . $out;
 	}
 
 
