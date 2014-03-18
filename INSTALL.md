@@ -16,27 +16,27 @@ SUS: Simple URL Shortener
 -----------
 
 1. Склонировать проект 
-git clone https://github.com/ivansu/sus.ly
+`git clone https://github.com/ivansu/sus.ly`
 
 2. Перейти в папку проекта
-cd sus.ly
+`cd sus.ly`
 
 3. Установить composer
-curl -sS https://getcomposer.org/installer | php
+`curl -sS https://getcomposer.org/installer | php`
 
 4. Стянуть зависимости
-php composer.phar update
+`php composer.phar update`
 
 5. Настроить DocRoot на www
 
 6. Необязательно, но может понадобиться - настроить права на папки с ассетами и логами:
-chmod 777 www/assets/
-chmod 777 www/protected/runtime/
+`chmod 777 www/assets/`
+`chmod 777 www/protected/runtime/`
 
 7. Создать MySQL БД, прописать параметры доступа к БД в конфиги:
-www/protected/config/console.php
-www/protected/config/main.php
+`www/protected/config/console.php`
+`www/protected/config/main.php`
 
 8. Прогнать миграции (находясь в директории www/protected)
-cd www/protected
-./yiic migrate
+`cd www/protected`
+`./yiic migrate`
