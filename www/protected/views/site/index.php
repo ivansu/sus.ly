@@ -3,18 +3,56 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
+<div class="page-header">
+    <h1>SUS: Simple URL Shortener <small>Простой укротитель ссылок.</small></h1>
+</div>
+ 
+<p>
+<?
+/** @var TbActiveForm $form */
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+$form = $this->beginWidget(
+    'bootstrap.widgets.TbActiveForm',
+    array(
+        'id' => 'shortenerForm',
+        'type' => 'inline',
+        'htmlOptions' => array('class' => 'well'),
+    )
+);
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+$this->widget('bootstrap.widgets.TbAlert', array(
+	'block' => true,
+	'fade' => true,
+	'closeText' => '&times;', // false equals no close link
+	'events' => array(),
+	'htmlOptions' => array(),
+	'userComponentId' => 'user',
+	'alerts' => array( // configurations per alert type
+		'success' => array('closeText' => '&times;'),
+		'error' => array('block' => false, 'closeText' => '&times;')
+	),
+));
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+
+
+
+
+echo $form->textFieldRow(
+    $model,
+    'url',
+    array(
+        'class' => 'input',
+		'placeholder' => 'Скопируйте URL сюда'
+    )
+);
+$this->widget(
+    'bootstrap.widgets.TbButton',
+    array('buttonType' => 'submit', 'type'=>'primary', 'label' => 'Укротить!')
+);
+
+$this->endWidget();
+unset($form);
+
+?>
+

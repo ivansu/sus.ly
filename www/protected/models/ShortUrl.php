@@ -14,4 +14,12 @@ class ShortUrl extends CActiveRecord
     {
         return 'short_url';
     }
+
+	public function rules()
+    {
+        return array(
+            array('url', 'required', 'message' => 'Пожалуйста, введите URL.'),
+            array('url', 'url', 'message' => 'Формат введённого URL неверен.'),
+        );
+    }
 }
