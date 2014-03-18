@@ -33,13 +33,8 @@ $this->widget('bootstrap.widgets.TbAlert', array(
 	),
 ));
 
-
-
-
-
-
 echo $form->textFieldRow(
-    $model,
+    $url,
     'url',
     array(
         'class' => 'input',
@@ -53,6 +48,5 @@ $this->widget(
 
 $this->endWidget();
 unset($form);
-
 ?>
 
