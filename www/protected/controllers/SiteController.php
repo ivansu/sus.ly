@@ -38,11 +38,48 @@ class SiteController extends Controller
 		$this->render('index', array('model'=>$model));
 	}
 
+	/**
+	 * Контроллер перекидывающий с укороченных урлов на реальные
+	 */
+	public function actionParse()
+	{
+		$redirectTo = '/';
+
+		if ($sourceUrl = $this->getLongUrl($_GET['hash']))
+		{
+			$redirectTo = $sourceUrl;
+		}
+		$this->redirect($redirectTo);
+	}
+
+	private function getLongUrl($hash)
+	{
+		if (empty($hash))
+		{
+			throw new InvalidArgumentException();
+		}
+
+		$in = $hash;
+		$out = '';
+		$base = strlen($this->dictionary);
+
+		$len = strlen($in) - 1;
+
+		for ($t = $len; $t >= 0; $t--) {
+		  $bcp = bcpow($base, $len - $t);
+		  $out = $out + strpos($this->dictionary, substr($in, $t, 1)) * $bcp;
+		}
+
+		$shortUrl = ShortUrl::model()->findByPk($out);
+
+		return $shortUrl ? $shortUrl->url : false;
+	}
+
 	private function getShortUrl(ShortUrl $model)
 	{
 		if (empty($model->id))
 		{
-			throw InvalidArgumentException();		
+			throw new InvalidArgumentException();		
 		}
 
 		$in = $model->id;		
