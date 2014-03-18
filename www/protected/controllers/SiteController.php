@@ -2,6 +2,8 @@
 
 class SiteController extends Controller
 {
+	private $dictionary = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -11,18 +13,16 @@ class SiteController extends Controller
 		$model = new ShortUrl();
 		$user = Yii::app()->getComponent('user');
 
-		$shortenerUrl = 'http://sus.ly/wegewqegq'; // TODO убрать хардкод домена
-
 		// collect user input data
 		if(isset($_POST['ShortUrl']))
 		{
 			$model->attributes=$_POST['ShortUrl'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate())
+			if($model->validate() && $model->save())
 			{
 				$user->setFlash(
 					'success',
-					'Получилось! Теперь вы можете зайти на ту же страницу но по укороченной ссылке: <strong>' . $shortenerUrl . '</strong>'
+					'Получилось! Теперь вы можете зайти на ту же страницу но по укороченной ссылке: <strong>' . $this->getShortUrl($model) . '</strong>'
 				);
 			}
 			else
@@ -37,6 +37,28 @@ class SiteController extends Controller
 
 		$this->render('index', array('model'=>$model));
 	}
+
+	private function getShortUrl(ShortUrl $model)
+	{
+		if (empty($model->id))
+		{
+			throw InvalidArgumentException();		
+		}
+
+		$in = $model->id;		
+		$out =   '';
+		$base = strlen($this->dictionary);
+
+		for ($t = floor(log($in, $base)); $t >= 0; $t--) {
+		  $bcp = bcpow($base, $t);
+		  $a   = floor($in / $bcp) % $base;
+		  $out = $out . substr($this->dictionary, $a, 1);
+		  $in  = $in - ($a * $bcp);
+		}
+
+		return 'http://sus.ly/' . $out;
+	}
+
 
 	/**
 	 * This is the action to handle external exceptions.
