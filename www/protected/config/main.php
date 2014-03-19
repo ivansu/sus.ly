@@ -84,12 +84,6 @@ return array(
 			'class' => 'ext.bootstrap.components.Bootstrap',
 		),
 	),
-
-	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
-	'params'=>array(
-		'baseUrl' => 'http://sus.ly/',
-	),
 );
 
 
