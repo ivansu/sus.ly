@@ -21,7 +21,7 @@ class SiteController extends Controller
 			{
 				$user->setFlash(
 					'success',
-					'Получилось! Теперь вы можете зайти на ту же страницу но по укороченной ссылке: <strong>' . Yii::app()->params['baseUrl'] . $this->getHashByUrl($url) . '</strong>'
+					'Получилось! Теперь вы можете зайти на ту же страницу но по укороченной ссылке: <strong>http://' . $_SERVER['SERVER_NAME'] . '/' . $this->getHashByUrl($url) . '</strong>'
 				);
 			}
 			else
